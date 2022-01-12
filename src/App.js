@@ -1,25 +1,44 @@
-import logo from './logo.svg';
+import React from 'react';
+
 import './App.css';
 
-function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+class App extends React.Component {
+  state={
+    active:true
+  }
+  handleClick = ()=>{
+ 
+    this.setState({
+      active: !this.state.active
+    })
+  }
+  render() { 
+    const btn_off = {
+      border: '2px solid green',
+      padding: '10px 20px',
+      fontFamily : 'arial',
+      display:'block',
+      margin:'20px auto',
+      backgroundColor: 'white',
+      color: 'blue'
+    }
+    const btn_on = {
+      border: '4px solid blue',
+      padding: '10px 20px',
+      fontFamily : 'arial',
+      display:'block',
+      margin:'20px auto',
+      backgroundColor: 'red'
+    }
+    
+    return (
+    <div>
+      <button 
+      style={this.state.active? btn_on:btn_off}
+      onClick={this.handleClick}>{this.state.active?"Wyłącz": "Włącz"}</button>
     </div>
-  );
+    );
+  }
 }
-
+ 
 export default App;
